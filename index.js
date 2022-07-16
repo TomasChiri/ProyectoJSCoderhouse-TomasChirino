@@ -1,30 +1,34 @@
 /*
-    ---FUNCIONES---
+---Clases y Arreglos---
 */
-function menu(){
-    let respuesta = parseInt(prompt("Ingrese el numero correspondiente para seleccionar una opcion: \r\n1. Ver peliculas en cartelera. \r\n2. Comprar entradas \r\n0. Salir"));
-
-    while(isNaN(respuesta) || respuesta < 0 || respuesta >= 3){
-                respuesta = parseInt(prompt("Por favor ingrese un número válido."));
+class Pelicula{
+    constructor(nombre, edadMinima, sinopsis, id){
+        this.nombre = nombre;
+        this.edadMinima = edadMinima;
+        this.sinopsis = sinopsis;
+        this.id = id;
     }
-    
-    return respuesta;
 }
 
-function verPeliculas(){
-    peliculas.forEach(pelicula => alert(`Pelicula: ${pelicula.nombre}\r\nPara mayores de: ${pelicula.edadMinima} \r\nDescripción: ${pelicula.sinopsis}`));
-}
+let peliculas = [];
+peliculas.push(new Pelicula("Batman", 13, "Batman sale a la calle a pegar piñas.", "idbat"));
+peliculas.push(new Pelicula("Minions", 0, "Los minions vuelven por decimocuarta vez.", "idmin"));
+peliculas.push(new Pelicula("Duro de Matar 8", 18, "Tiros y mucha sangre.", "iddur"));
 
-function verificarPelicula(){
-    let peliculaExiste;
+/*
+    ---VARIABLES--
+*/
+const PRECIOENTRADA = 800, DESCUENTO = 0.35;
+let totalEntrada, entradasNombre, entradasCantidad, codigoDescuento;
+let compraExiste;
+let btnPeliculas = document.getElementById("peliculas");
+let cartelera = document.getElementById("cartelera");
+let mensajeEntradas = document.getElementById("mensaje");
 
-    if(!(peliculas.some(pelicula => pelicula.nombre.toLowerCase() == entradasNombre.toLowerCase()))){
-        alert("No existe pelicula con ese nombre");
-        return peliculaExiste = false;
-    }
-
-    return peliculaExiste = true;
-}
+/*
+---FUNCIONES---
+*/
+//verifica si la entrada es un numero y si es mayor a 0
 function verificarEntradas(entradas){
     
     while(isNaN(entradas) || entradas <= 0){
@@ -34,65 +38,71 @@ function verificarEntradas(entradas){
     return entradas;
 }
 
+//Crea una lista de las peliculas en el arreglo junto con un boton para comprar entradas
+function verPeliculas(peliculas){
+    for(const pelicula of peliculas){
+        let li = document.createElement("li");
+        let btn = document.createElement("button");
+        btn.setAttribute("id", pelicula.id);
+        li.innerHTML = `<h3>Nombre: ${pelicula.nombre}</h3>
+                        <p>Para mayores de: ${pelicula.edadMinima}</p>     
+                        <p>Sinopsis: ${pelicula.sinopsis}</p>`;
+        btn.innerHTML = "Comprar entradas";
+        cartelera.append(li);
+        cartelera.append(btn);
+    }
+    
+    return true;
+}
+
+//itera las peliculas que existen en la cartelera y realiza la compra de entradas
+function comprarEntradas(peliculas){
+    for(const pelicula of peliculas){
+        let btnEntradas = document.getElementById(pelicula.id);
+
+        btnEntradas.addEventListener("click", () => {
+            entradasCantidad = parseInt(prompt(`¿Cuántas entradas va a comprar? (El precio es de ${PRECIOENTRADA} pesos por entrada)`));
+            entradasCantidad = verificarEntradas(entradasCantidad);
+            totalEntrada = entradasCantidad * PRECIOENTRADA;
+            entradasNombre = pelicula.nombre;
+
+            codigoDescuento = prompt("Si tiene un código de descuento ingreselo. (Pista: es 123)");                
+            //Aplico el descuento si ingresó el codigo correcto
+            if(codigoDescuento === "123"){
+                alert("Descuento del 35% aplicado correctamente");
+                totalEntrada = aplicarDescuento(totalEntrada);
+            }
+
+            //Notifico la cantidad de entradas y cuanto pagó
+            if(entradasCantidad === 1){
+                mensajeEntradas.innerHTML = `Compraste ${entradasCantidad} entrada para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`;
+                mensajeEntradas.className = "comprado";
+            }else{
+                mensajeEntradas.innerHTML = `Compraste ${entradasCantidad} entradas para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`;
+                mensajeEntradas.className = "comprado";
+            }
+        })
+    }
+}
+
+//Aplica el descuento al total de entradas segun la constante
 function aplicarDescuento(totalEntrada){
     let resultado = totalEntrada - (totalEntrada * DESCUENTO);
     return resultado;
 }
 
-/*
-    ---VARIABLES--
-*/
-const peliculas = [
-    {nombre: "Batman", edadMinima: 13, sinopsis: "Batman sale a la calle a pegar piñas."},
-    {nombre: "Minions", edadMinima: 0, sinopsis: "Los minions vuelven por decimocuarta vez."},
-    {nombre: "Duro de Matar 8", edadMinima: 18, sinopsis: "Tiros y mucha sangre."}
-]
-const PRECIOENTRADA = 800, DESCUENTO = 0.35;
-let respuesta, totalEntrada, entradasNombre, entradasCantidad, peliculaExiste, codigoDescuento;
 
 /*
     ---DESARROLLO---
 */
-alert("Bienvenid@ a Hoyts Trucho donde puede ver las peliculas en cartelera y comprar sus entradas");
-do{
-    respuesta = menu();
+btnPeliculas.addEventListener("click", () => {
+    compraExiste = verPeliculas(peliculas);
 
-    switch(respuesta){
-        case 1:
-            verPeliculas();
-            break;
-        case 2:
-            entradasNombre = prompt("Ingrese el nombre de la pelicula que quiere ver:");
-            peliculaExiste = verificarPelicula();
-
-            //Si la pelicula existe realizo la compra de entradas
-            if(peliculaExiste){
-                entradasCantidad = parseInt(prompt("¿Cuántas entradas va a comprar? (El precio es de 800 pesos por entrada)"));
-                entradasCantidad = verificarEntradas(entradasCantidad);
-                totalEntrada = entradasCantidad * PRECIOENTRADA;
-                codigoDescuento = prompt("Si tiene un código de descuento ingreselo. (Pista: es 123)");
-                
-                //Aplico el descuento si ingresó el codigo correcto
-                if(codigoDescuento === "123"){
-                    alert("Descuento del 35% aplicado correctamente");
-                    totalEntrada = aplicarDescuento(totalEntrada);
-                }
-
-                //Notifico la cantidad de entradas y cuanto pagó
-                if(entradasCantidad === 1){
-                    alert(`Compraste ${entradasCantidad} entrada para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`);
-                }else{
-                    alert(`Compraste ${entradasCantidad} entradas para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`);
-                }
-            }
-            break;
-        default:
-            break;
+    if(compraExiste){
+        comprarEntradas(peliculas);
     }
+});
 
-}while(respuesta != 0)
-
-alert("Gracias por visitarnos!\r\nQue tenga un buen día!");
 
 
 
