@@ -1,6 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Ubuntu', sans-serif;
+    height: 100vh;
+    position: relative;
+}
+
+.header, .footer{
+    height: 75px;
+    background-color: rgba(45, 44, 44, 0.895);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
+    color: white;
+}
+
+.header__logo, .footer__logo{
+    height: 50px;
+    width: 50px;
+}
+
+.header__items{
+    display: inline;
+    list-style: none;
+    font-size: 1.5rem;
+}
+
+.header__perfil{
+    height: 25px;
+    width: 25px;
+}
+
+.header__sesion{
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    text-decoration: none;
+}
+
+.ingreso{
+    height: 300px;
+    max-width: 40%;
+    background-color: darkred;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    padding: 1rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.ingreso label{
+    display: block;
+}
+
+.poster{
+    width: 100px;
+    height: 100px;
+}
+
+.none{
+    display: none;
+}
+
+.comprar{
+    height: 300px;
+    max-width: 40%;
+    background-color: darkblue;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    padding: 1rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.comprar label{
+    display: block;
+}
+
 .comprado{
     background-color: rgba(76, 220, 10, 0.988);
     color: white;
     font-size: 3rem;
     text-align: center;
 }
+
