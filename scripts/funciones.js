@@ -1,6 +1,20 @@
 /*
 ---FUNCIONES---
 */
+//Contiene un alert importante que se ejecutara al iniciar la pagina
+function avisoImportante(){
+    Swal.fire({
+        title: 'IMPORTANTE',
+        text: 'La película THOR LOVE AND THUNDER contiene varias escenas con luces intermitentes que pueden afectar a personas susceptibles a la epilepsia fotosensible o a padecer otras foto-sensibilidades.',
+        showClass: {
+          popup: 'animate__animated animate__fadeInDown'
+        },
+        hideClass: {
+          popup: 'animate__animated animate__fadeOutUp'
+        }
+      })
+}
+
 //Verifica si el usuario ya se encuentra dentro del sessionStorage al iniciar la pagina y lo escribe en el header
 function verificarExistenciaUsuario(){
     let usuarioStorage = sessionStorage.getItem("usuario");
@@ -78,7 +92,11 @@ function comprarEntradas(peliculas){
         btnEntradas.addEventListener("click", () => {
             //Verifico si el usuario inició sesion y si es así puede comprar entradas
             if(!verificarExistenciaUsuario()){
-                alert("Debes iniciar sesion para poder comprar entradas");
+                Swal.fire(
+                    'Error',
+                    'Debes iniciar sesion para poder comprar entradas',
+                    'error'
+                  )
             }else{
                 //agrego la clase comprar asi aparece el formulario
                 comprar.className = "comprar";
@@ -94,7 +112,11 @@ function comprarEntradas(peliculas){
                     codigoDescuento = e.target.children[1].children[0].value;
                     // //Aplico el descuento si ingresó el codigo correcto
                     if(codigoDescuento === "123"){
-                        alert("Descuento del 35% aplicado correctamente");
+                        Swal.fire(
+                            '¡Codigo Aplicado!',
+                            '¡Tienes un 35% de descuento!',
+                            'success'
+                          )
                         totalEntrada = aplicarDescuento(totalEntrada);
                         }
                         
