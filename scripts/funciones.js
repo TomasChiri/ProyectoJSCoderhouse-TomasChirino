@@ -65,8 +65,10 @@ function aplicarDescuento(totalEntrada){
     return resultado;
 }
 
+
+
 //Crea una lista de las peliculas en el arreglo junto con un boton para comprar entradas
-function verPeliculas(peliculas){
+/* function verPeliculas(peliculas){
     cartelera.innerHTML = "";
     for(const pelicula of peliculas){
         let li = document.createElement("li");
@@ -82,10 +84,10 @@ function verPeliculas(peliculas){
     }
     
     return true;
-}
+} */
 
 //itera las peliculas que existen en la cartelera y realiza la compra de entradas
-function comprarEntradas(peliculas){
+/* function comprarEntradas(peliculas){
     for(const pelicula of peliculas){
         let btnEntradas = document.getElementById(pelicula.id);
 
@@ -134,4 +136,89 @@ function comprarEntradas(peliculas){
             }
         })
     }
+} */
+
+//Crea una lista de las peliculas en el arreglo junto con un boton para comprar entradas (UTILIZANDO EL FETCH)
+async function traerPeliculas() {
+    cartelera.innerHTML = "";
+
+    try{
+        const response = await fetch('../json/peliculas.json');
+        const peliculas = await response.json();
+
+        peliculas.forEach(pelicula => {
+            let li = document.createElement("li");
+            let btn = document.createElement("button");
+            btn.setAttribute("id", pelicula.id);
+            li.innerHTML = `<h3>Nombre: ${pelicula.nombre}</h3>
+                            <p>Para mayores de: ${pelicula.edadMinima}</p>     
+                            <p>Sinopsis: ${pelicula.sinopsis}</p>
+                            <img class="poster" src="./imagenes/${pelicula.id}.jpg" alt="poster de ${pelicula.nombre}">`;              
+            btn.innerHTML = "Comprar entradas";
+            cartelera.append(li);
+            cartelera.append(btn);
+        });
+    }catch(error){
+        console.log(error);
+    }
+}
+
+//itera las peliculas que existen en la cartelera y realiza la compra de entradas (UTILIZANDO EL FETCH)
+async function comprareEntradas(){
+    try{
+        const response = await fetch('../json/peliculas.json');
+        const peliculas = await response.json();
+
+        peliculas.forEach(pelicula => {
+            let btnEntradas = document.getElementById(pelicula.id);
+
+            btnEntradas.addEventListener("click", () => {
+                //Verifico si el usuario inició sesion y si es así puede comprar entradas
+                if(!verificarExistenciaUsuario()){
+                    Swal.fire(
+                        'Error',
+                        'Debes iniciar sesion para poder comprar entradas',
+                        'error'
+                    )
+                }else{
+                    //agrego la clase comprar asi aparece el formulario
+                    comprar.className = "comprar";
+                    formularioCompras.addEventListener("submit", (e) => {
+                        e.preventDefault();
+                        
+                        //busco el value del primer y segundo input del formulario que van a ser la cantidad de entradas y el codigo de descuento respectivamente
+                        entradasCantidad = e.target.children[0].children[0].value;
+                        entradasCantidad = verificarEntradas(entradasCantidad);
+                        totalEntrada = entradasCantidad * PRECIOENTRADA;
+                        entradasNombre = pelicula.nombre;
+        
+                        codigoDescuento = e.target.children[1].children[0].value;
+                        // //Aplico el descuento si ingresó el codigo correcto
+                        if(codigoDescuento === "123"){
+                            Swal.fire(
+                                '¡Codigo Aplicado!',
+                                '¡Tienes un 35% de descuento!',
+                                'success'
+                            )
+                            totalEntrada = aplicarDescuento(totalEntrada);
+                        }
+                            
+                        //Notifico la cantidad de entradas y cuanto pagó
+                        if(entradasCantidad === 1){
+                            mensajeEntradas.innerHTML = `Compraste ${entradasCantidad} entrada para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`;
+                            mensajeEntradas.className = "comprado";
+                            comprar.className = "none"; 
+                        }else{
+                            mensajeEntradas.innerHTML = `Compraste ${entradasCantidad} entradas para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`;
+                            mensajeEntradas.className = "comprado";
+                            comprar.className = "none"; 
+                        }
+                    })
+                }
+        })
+        });
+    }catch(error){
+        console.log(error);
+    }
+    
 }

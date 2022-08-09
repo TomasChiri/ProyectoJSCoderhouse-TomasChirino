@@ -1,0 +1,9 @@
+[
+    {"nombre":"Batman", "edadMinima":13, "sinopsis":"Batman sale a la calle a pegar piñas.", "id":"idbat"},
+    {"nombre":"Minions", "edadMinima":0, "sinopsis":"Los minions vuelven por decimocuarta vez.", "id":"idmin"},
+    {"nombre":"Top Gun Maverick", "edadMinima":13, "sinopsis":"Tom Cruise se sube a un avion.", "id":"idtop"},
+    {"nombre":"Thor Love and Thunder", "edadMinima":13, "sinopsis":"Thor hace muchos chistes.", "id":"idthor"},
+    {"nombre":"Jurassic World Dominio", "edadMinima":13, "sinopsis":"El final de la saga jurasica.", "id":"idjur"},
+    {"nombre":"Lightyear", "edadMinima":0, "sinopsis":"El inicio de Buzz Lightyear.", "id":"idlight"},
+    {"nombre":"Alien", "edadMinima":18, "sinopsis":"El clasico de horror vuelve al cine.", "id":"idali"}
+]

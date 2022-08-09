@@ -8,8 +8,8 @@ verificarExistenciaUsuario();
 perfilLink.addEventListener("click", ingresoUsuario)
 
 btnPeliculas.addEventListener("click", () => {
-    compraExiste = verPeliculas(peliculas);
+    compraExiste = traerPeliculas();
 
     //Utilizo el operador AND donde si existe compraExiste se podra realizar la compra de entradas
-    compraExiste && comprarEntradas(peliculas);
+    compraExiste && comprareEntradas();
 });
