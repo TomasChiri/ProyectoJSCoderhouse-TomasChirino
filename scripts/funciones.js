@@ -5,7 +5,7 @@
 function avisoImportante(){
     Swal.fire({
         title: 'IMPORTANTE',
-        text: 'La película THOR LOVE AND THUNDER contiene varias escenas con luces intermitentes que pueden afectar a personas susceptibles a la epilepsia fotosensible o a padecer otras foto-sensibilidades.',
+        text: 'La película DOCTOR STRANGE 2 contiene varias escenas con luces intermitentes que pueden afectar a personas susceptibles a la epilepsia fotosensible o a padecer otras foto-sensibilidades.',
         showClass: {
           popup: 'animate__animated animate__fadeInDown'
         },
@@ -148,15 +148,13 @@ async function traerPeliculas() {
 
         peliculas.forEach(pelicula => {
             let li = document.createElement("li");
-            let btn = document.createElement("button");
-            btn.setAttribute("id", pelicula.id);
-            li.innerHTML = `<h3>Nombre: ${pelicula.nombre}</h3>
-                            <p>Para mayores de: ${pelicula.edadMinima}</p>     
-                            <p>Sinopsis: ${pelicula.sinopsis}</p>
-                            <img class="poster" src="./imagenes/${pelicula.id}.jpg" alt="poster de ${pelicula.nombre}">`;              
-            btn.innerHTML = "Comprar entradas";
+            li.innerHTML = `<h3 class="titulo">${pelicula.nombre}</h3>
+                            <p class="edad">Para mayores de: ${pelicula.edadMinima}</p>     
+                            <p class="sinopsis">Sinopsis: ${pelicula.sinopsis}</p>
+                            <img class="poster" src="./imagenes/${pelicula.id}.jpg" alt="poster de ${pelicula.nombre}">
+                            <button id=${pelicula.id}>Comprar entradas</button>`; 
+                                         
             cartelera.append(li);
-            cartelera.append(btn);
         });
     }catch(error){
         console.log(error);
@@ -195,22 +193,49 @@ async function comprareEntradas(){
                         codigoDescuento = e.target.children[1].children[0].value;
                         // //Aplico el descuento si ingresó el codigo correcto
                         if(codigoDescuento === "123"){
-                            Swal.fire(
-                                '¡Codigo Aplicado!',
-                                '¡Tienes un 35% de descuento!',
-                                'success'
-                            )
+                            Swal.fire({
+                                position: 'top-end',
+                                icon: 'success',
+                                title: '¡Codigo Aplicado!',
+                                text:'¡Tienes un 35% de descuento!',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
                             totalEntrada = aplicarDescuento(totalEntrada);
                         }
                             
                         //Notifico la cantidad de entradas y cuanto pagó
                         if(entradasCantidad === 1){
-                            mensajeEntradas.innerHTML = `Compraste ${entradasCantidad} entrada para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`;
-                            mensajeEntradas.className = "comprado";
+                            if(codigoDescuento === "123"){
+                                setTimeout(function(){
+                                    Swal.fire(
+                                        '¡Listo!',
+                                        `Compraste ${entradasCantidad} entrada para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`,
+                                        'success'
+                                )}, 1500)
+                            }else{
+                                Swal.fire(
+                                    '¡Listo!',
+                                    `Compraste ${entradasCantidad} entrada para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`,
+                                    'success'
+                                    )
+                            }
                             comprar.className = "none"; 
                         }else{
-                            mensajeEntradas.innerHTML = `Compraste ${entradasCantidad} entradas para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`;
-                            mensajeEntradas.className = "comprado";
+                            if(codigoDescuento === "123"){
+                                setTimeout(function(){
+                                    Swal.fire(
+                                        '¡Listo!',
+                                        `Compraste ${entradasCantidad} entradas para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`,
+                                        'success'
+                                )}, 1500)
+                            }else{
+                                Swal.fire(
+                                    '¡Listo!',
+                                    `Compraste ${entradasCantidad} entradas para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`,
+                                    'success'
+                                    )
+                            }
                             comprar.className = "none"; 
                         }
                     })

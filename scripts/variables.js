@@ -32,4 +32,3 @@ let btnPeliculas = document.getElementById("peliculas");
 let cartelera = document.getElementById("cartelera");
 let comprar = document.getElementById("compra");
 let formularioCompras = document.getElementById("formularioCompras");
-let mensajeEntradas = document.getElementById("mensaje");

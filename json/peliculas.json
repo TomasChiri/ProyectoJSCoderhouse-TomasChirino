@@ -1,9 +1,9 @@
 [
-    {"nombre":"Batman", "edadMinima":13, "sinopsis":"Batman sale a la calle a pegar piñas.", "id":"idbat"},
-    {"nombre":"Minions", "edadMinima":0, "sinopsis":"Los minions vuelven por decimocuarta vez.", "id":"idmin"},
-    {"nombre":"Top Gun Maverick", "edadMinima":13, "sinopsis":"Tom Cruise se sube a un avion.", "id":"idtop"},
-    {"nombre":"Thor Love and Thunder", "edadMinima":13, "sinopsis":"Thor hace muchos chistes.", "id":"idthor"},
-    {"nombre":"Jurassic World Dominio", "edadMinima":13, "sinopsis":"El final de la saga jurasica.", "id":"idjur"},
-    {"nombre":"Lightyear", "edadMinima":0, "sinopsis":"El inicio de Buzz Lightyear.", "id":"idlight"},
-    {"nombre":"Alien", "edadMinima":18, "sinopsis":"El clasico de horror vuelve al cine.", "id":"idali"}
+    {"nombre":"Batman", "edadMinima":13, "sinopsis":"En su segundo año luchando contra el crimen, Batman explora la corrupción existente en la ciudad de Gotham y el vínculo de esta con su propia familia. Además, entrará en conflicto con un asesino en serie conocido como el Acertijo", "id":"idbat"},
+    {"nombre":"Minions", "edadMinima":0, "sinopsis":"En los años 70, Gru crece siendo un gran admirador de Los salvajes seis, un supergrupo de villanos. Para demostrarles que puede ser malvado, Gru idea un plan con la esperanza de formar parte de la banda. Por suerte, cuenta con la ayuda de sus fieles seguidores, los Minions, siempre dispuestos a sembrar el caos.", "id":"idmin"},
+    {"nombre":"Top Gun Maverick", "edadMinima":13, "sinopsis":"Tras más de 30 años de servicio como uno de los mejores aviadores de la Armada, Pete Maverick Mitchel se encuentra dónde siempre quiso estar, empujando los límites como un valiente piloto de prueba.", "id":"idtop"},
+    {"nombre":"Doctor Strange 2", "edadMinima":13, "sinopsis":"Continúan las aventuras del Dr. Stephen Strange y sus superpoderes en la secuela de Marvel Dr. Strange.", "id":"idstrange"},
+    {"nombre":"Jurassic World Dominio", "edadMinima":13, "sinopsis":"Tercera entrega de la franquicia Jurassic World.", "id":"idjur"},
+    {"nombre":"Lightyear", "edadMinima":0, "sinopsis":"Buzz Lightyear se embarca en una aventura intergaláctica con un grupo de reclutas ambiciosos y su compañero robot.", "id":"idlight"},
+    {"nombre":"Morbius", "edadMinima":13, "sinopsis":"Ambientada en el universo de Spider Man, se centra en uno de sus villanos más icónicos, Morbius, un doctor que tras sufrir una enfermedad en la sangre y fallar al intentar curarse, se convirtió en un vampiro.", "id":"idmor"}
 ]

@@ -14,6 +14,9 @@
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
     <!-- Link a hoja de estilo -->
     <link rel="stylesheet" href="./estilos.css">
 </head>
@@ -30,40 +33,73 @@
         <div>
             <img class="header__perfil" src="./imagenes/perfil.png" alt="perfil"> 
             <span id="perfil"><a id="perfilLink" class="header__sesion" href="#">Iniciar sesion</a></span>
-        </div>
-        
+        </div>        
     </header>
 
-    <div id="ingreso" class="none">
-        <h2>Registro de usuario</h2>
-        <form id="formularioIngreso" action="">
-            <label for="usuario">Ingrese el nombre de usuario: <input name="entradas" type="text"></label>
-            <label for="contraseña">Ingrese la contraseña: <input name="contraseña" type="password"></label>
-            <button type="submit">Ingresar</button>
-        </form>
-    </div>
+        <div id="ingreso" class="none">
+            <h2>Registro de usuario</h2>
+            <form id="formularioIngreso" action="">
+                <label for="usuario">Ingrese el nombre de usuario: <input name="entradas" type="text"></label>
+                <label for="contraseña">Ingrese la contraseña: <input name="contraseña" type="password"></label>
+                <button type="submit">Ingresar</button>
+            </form>
+        </div>
 
-    <h1>Hoyts Trucho</h1>
-    <h2>Bienvenid@ a Hoyts Trucho donde puede ver las peliculas en cartelera y comprar sus entradas</h2>
+    <main>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+            <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="imagenes/promo-dr-strange.jpg" class="d-block w-100" alt="Promo de Dr Strange">
+            </div>
+            <div class="carousel-item">
+                <img src="imagenes/Promo_Morbius.jpg" class="d-block w-100" alt="Promo de Morbius">
+            </div>
+            <div class="carousel-item">
+                <img src="imagenes/Promo_Hp.jpg" class="d-block w-100" alt="Promo de Harry Potter">
+            </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+            </button>
+        </div>
 
-    <button id="peliculas">Peliculas en cartelera</button>
+        <section class="inicio">
+            <h1>Bienvenid@ a Boletaria</h1>
+            <h2>Aquí puedes ver las peliculas en cartelera y conseguir tus entradas.</h2>
+    
+            <button id="peliculas" class="btn btn-outline-light btn-lg">Peliculas en cartelera</button>
+        </section>
 
-    <div id="cartelera"></div>
+        <div id="cartelera" class="cartelera"></div>
 
-    <div id="compra" class="none">
-        <form id="formularioCompras" action="">
-            <label for="entradas">¿Cuántas entradas va a comprar? (el precio es de 800 por entrada) <input name="entradas" type="number"></label>
-            <label for="codigo">Si tiene un código de descuento ingreselo. (Pista: es 123) <input name="codigo" type="number"></label>
-            <button type="submit">Comprar</button>
-        </form>
-    </div>
+        <div id="compra" class="none">
+            <form id="formularioCompras" action="">
+                <label for="entradas">¿Cuántas entradas va a comprar? (el precio es de 800 por entrada) <input name="entradas" type="number"></label>
+                <label for="codigo">Si tiene un código de descuento ingreselo. (Pista: es 123) <input name="codigo" type="number"></label>
+                <button type="submit">Comprar</button>
+            </form>
+        </div>
 
-    <div id="mensaje"></div>
+
+    </main>
 
     <footer class="footer">
         <img class="footer__logo" src="./imagenes/logo.png" alt="logo">
         <p>aca irian cosas del footer</p>
     </footer>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 
     <!-- Sweet Alerts -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
