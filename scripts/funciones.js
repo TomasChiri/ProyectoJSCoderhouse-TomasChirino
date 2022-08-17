@@ -148,11 +148,11 @@ async function traerPeliculas() {
 
         peliculas.forEach(pelicula => {
             let li = document.createElement("li");
-            li.innerHTML = `<h3 class="titulo">${pelicula.nombre}</h3>
+            li.innerHTML = `<img class="poster" src="./imagenes/${pelicula.id}.jpg" alt="poster de ${pelicula.nombre}">
+                            <h3 class="titulo">${pelicula.nombre}</h3>                    
                             <p class="edad">Para mayores de: ${pelicula.edadMinima}</p>     
                             <p class="sinopsis">Sinopsis: ${pelicula.sinopsis}</p>
-                            <img class="poster" src="./imagenes/${pelicula.id}.jpg" alt="poster de ${pelicula.nombre}">
-                            <button id=${pelicula.id}>Comprar entradas</button>`; 
+                            <button id=${pelicula.id} class="btn btn-outline-success btnCompra">Comprar entradas</button>`; 
                                          
             cartelera.append(li);
         });

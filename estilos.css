@@ -71,7 +71,7 @@ main{
 .ingreso{
     height: 300px;
     max-width: 40%;
-    background-color: darkred;
+    background-color: rgba(86, 0, 0, 0.923);
     position: fixed;
     top: 50%;
     left: 50%;
@@ -84,6 +84,16 @@ main{
 
 .ingreso label{
     display: block;
+    margin: 1rem auto;
+}
+
+.ingreso h2{
+    text-align: center;
+}
+
+.ingreso button{
+    display: block;
+    margin: 0 auto;
 }
 
 .inicio{
@@ -100,10 +110,6 @@ main{
     margin: 1rem;
 }
 
-.poster{
-    width: 300px;
-    height: 300px;
-}
 
 .none{
     display: none;
@@ -112,7 +118,7 @@ main{
 .comprar{
     height: 300px;
     max-width: 40%;
-    background-color: darkblue;
+    background-color: rgba(0, 0, 139, 0.909);
     position: fixed;
     top: 50%;
     left: 50%;
@@ -125,6 +131,13 @@ main{
 
 .comprar label{
     display: block;
+    margin: 1rem auto;
+}
+
+.comprar button{
+    display: block;
+    margin: 0 auto;
+    font-size: 1.8rem;
 }
 
 .cartelera{
@@ -137,5 +150,28 @@ main{
 
 .cartelera li{
     list-style: none;
+    max-width: 30%;
+    margin: 2rem auto;
+    text-align: justify;
 }
 
+.titulo{
+    text-align: center;
+    font-size: 2rem;
+}
+
+.edad{
+    text-align: center;
+}
+
+.poster{
+    width: 300px;
+    height: 350px;
+    display: block;
+    margin: 0 auto;
+}
+
+.btnCompra{
+    display: block;
+    margin: 0 auto;
+}
