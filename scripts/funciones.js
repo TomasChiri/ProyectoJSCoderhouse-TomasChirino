@@ -66,32 +66,34 @@ function aplicarDescuento(totalEntrada){
 }
 
 
+//Crea una lista de las peliculas en el arreglo de Harry Potter junto con un boton para comprar entradas
+function traerPeliculasHP(peliculasHarry){
+    containerHarry.innerHTML = "";
+    
+    let maratonHP = document.getElementById("maratonHP");
+    maratonHP.innerHTML=`<h2 class="maratonHP animate__animated animate__fadeIn">Maraton de peliculas de Harry Potter</h2>`
 
-//Crea una lista de las peliculas en el arreglo junto con un boton para comprar entradas
-/* function verPeliculas(peliculas){
-    cartelera.innerHTML = "";
-    for(const pelicula of peliculas){
+    containerHarry.classList.add("animate__animated");
+    containerHarry.classList.add("animate__fadeIn");
+    for(const pelicula of peliculasHarry){
         let li = document.createElement("li");
-        let btn = document.createElement("button");
-        btn.setAttribute("id", pelicula.id);
-        li.innerHTML = `<h3>Nombre: ${pelicula.nombre}</h3>
-                        <p>Para mayores de: ${pelicula.edadMinima}</p>     
-                        <p>Sinopsis: ${pelicula.sinopsis}</p>
-                        <img class="poster" src="./imagenes/${pelicula.id}.jpg" alt="poster de ${pelicula.nombre}">`;              
-        btn.innerHTML = "Comprar entradas";
-        cartelera.append(li);
-        cartelera.append(btn);
+            li.innerHTML = `<img class="poster" src="./imagenes/${pelicula.id}.jpg" alt="poster de ${pelicula.nombre}">
+                            <h3 class="titulo tituloHarry">${pelicula.nombre}</h3>                    
+                            <p class="edad">Para mayores de: ${pelicula.edadMinima}</p>     
+                            <p class="sinopsis">Sinopsis: ${pelicula.sinopsis}</p>
+                            <button id=${pelicula.id} class="btn btn-outline-success btnCompra">Comprar entradas</button>`;
+        containerHarry.append(li);
     }
     
     return true;
-} */
+}
 
-//itera las peliculas que existen en la cartelera y realiza la compra de entradas
-/* function comprarEntradas(peliculas){
-    for(const pelicula of peliculas){
-        let btnEntradas = document.getElementById(pelicula.id);
+//itera las peliculas de Harry Potter y realiza la compra de entradas
+function comprarEntradasHP(peliculasHarry){
+    for(const pelicula of peliculasHarry){
+        let btnEntradasHP = document.getElementById(pelicula.id);
 
-        btnEntradas.addEventListener("click", () => {
+        btnEntradasHP.addEventListener("click", () => {
             //Verifico si el usuario inició sesion y si es así puede comprar entradas
             if(!verificarExistenciaUsuario()){
                 Swal.fire(
@@ -114,29 +116,56 @@ function aplicarDescuento(totalEntrada){
                     codigoDescuento = e.target.children[1].children[0].value;
                     // //Aplico el descuento si ingresó el codigo correcto
                     if(codigoDescuento === "123"){
-                        Swal.fire(
-                            '¡Codigo Aplicado!',
-                            '¡Tienes un 35% de descuento!',
-                            'success'
-                          )
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: '¡Codigo Aplicado!',
+                            text:'¡Tienes un 35% de descuento!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
                         totalEntrada = aplicarDescuento(totalEntrada);
                         }
                         
                     //Notifico la cantidad de entradas y cuanto pagó
                     if(entradasCantidad === 1){
-                        mensajeEntradas.innerHTML = `Compraste ${entradasCantidad} entrada para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`;
-                        mensajeEntradas.className = "comprado";
+                        if(codigoDescuento === "123"){
+                            setTimeout(function(){
+                                Swal.fire(
+                                    '¡Listo!',
+                                    `Compraste ${entradasCantidad} entrada para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`,
+                                    'success'
+                            )}, 1500)
+                        }else{
+                            Swal.fire(
+                                '¡Listo!',
+                                `Compraste ${entradasCantidad} entrada para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`,
+                                'success'
+                                )
+                        }
                         comprar.className = "none"; 
                     }else{
-                        mensajeEntradas.innerHTML = `Compraste ${entradasCantidad} entradas para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`;
-                        mensajeEntradas.className = "comprado";
-                        comprar.className = "none"; 
+                        if(codigoDescuento === "123"){
+                            setTimeout(function(){
+                                Swal.fire(
+                                    '¡Listo!',
+                                    `Compraste ${entradasCantidad} entradas para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`,
+                                    'success'
+                            )}, 1500)
+                        }else{
+                            Swal.fire(
+                                '¡Listo!',
+                                `Compraste ${entradasCantidad} entradas para ir a ver ${entradasNombre} y pagaste ${totalEntrada} pesos.`,
+                                'success'
+                                )
                         }
+                        comprar.className = "none"; 
+                    }
                 })
             }
         })
     }
-} */
+}
 
 //Crea una lista de las peliculas en el arreglo junto con un boton para comprar entradas (UTILIZANDO EL FETCH)
 async function traerPeliculas() {
@@ -156,6 +185,22 @@ async function traerPeliculas() {
                                          
             cartelera.append(li);
         });
+
+        //Creo un boton donde si se apreta se mostrarán las peliculas de Harry Potter
+        containerHarry.innerHTML = `<button type="button" class="btn btn-outline-warning btnHarry" id="btnHarry">Haz Click aqui para una sorpresa magica</button>`;
+        let btnHarry = document.getElementById("btnHarry");
+
+        //Agrego las funcionalidades al boton de Harry Potter
+        btnHarry.addEventListener("click", ()=>{
+            //Inserto la musica cuando se apreta el boton
+            musicaHarry.play();
+
+            harryExiste = traerPeliculasHP(peliculasHarry);
+
+            //Utilizo el operador AND donde si existen las peliculas de HP se podra realizar la compra de entradas
+            harryExiste && comprarEntradasHP(peliculasHarry);
+        });
+
     }catch(error){
         console.log(error);
     }

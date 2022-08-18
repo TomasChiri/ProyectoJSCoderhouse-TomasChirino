@@ -1,3 +1,12 @@
+@font-face {
+    font-family: "Harry";
+    src: url(fonts/HARRYP__.TTF);
+}
+
+.animate__animated.animate__fadeIn {
+    --animate-duration: 13s;
+  }
+
 *{
     margin: 0;
     padding: 0;
@@ -140,7 +149,7 @@ main{
     font-size: 1.8rem;
 }
 
-.cartelera{
+.cartelera, .harry{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -148,7 +157,7 @@ main{
     max-width: 80%; 
 }
 
-.cartelera li{
+.cartelera li, .harry li{
     list-style: none;
     max-width: 30%;
     margin: 2rem auto;
@@ -175,3 +184,33 @@ main{
     display: block;
     margin: 0 auto;
 }
+
+.seccionHP{
+  background-color: rgba(82, 82, 86, 0.13);
+  border-radius: 12px;
+  margin-top: 1.5rem;
+  padding: 1.2rem;  
+}
+
+.maratonHP{
+    text-align: center;
+    font-family: "Harry";
+    font-size: 4rem;
+    color: gold;
+}
+
+.tituloHarry{
+    font-family: "Harry";
+    font-size: 2.3rem;
+    margin-top: 10px;
+}
+
+
+.btnHarry{
+    font-family: "Harry";
+    font-size: 2.5rem;
+    text-decoration: none;
+    color: gold;
+}
+
+  
