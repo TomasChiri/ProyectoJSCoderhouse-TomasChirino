@@ -77,10 +77,10 @@ main{
     height: 16px !important; 
 }
 
-.ingreso{
-    height: 300px;
+.ingreso, .registro{
+    height: auto;
     max-width: 40%;
-    background-color: rgba(86, 0, 0, 0.923);
+    background-color: rgba(26, 26, 26, 0.923);
     position: fixed;
     top: 50%;
     left: 50%;
@@ -91,18 +91,29 @@ main{
     font-size: 1.5rem;
 }
 
-.ingreso label{
+.ingreso label, .registro label{
     display: block;
-    margin: 1rem auto;
+    margin: 1rem;
+    width: 200px;
 }
 
-.ingreso h2{
+.ingreso h2, .registro h2{
     text-align: center;
+    text-decoration: underline;
 }
 
-.ingreso button{
+.ingreso h6{
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.ingreso button, .registro button{
     display: block;
     margin: 0 auto;
+}
+
+.registro{
+    width: 30%; 
 }
 
 .inicio{
@@ -125,9 +136,9 @@ main{
 }
 
 .comprar{
-    height: 300px;
+    height: auto;
     max-width: 40%;
-    background-color: rgba(0, 0, 139, 0.909);
+    background-color: rgba(6, 6, 57, 0.966);
     position: fixed;
     top: 50%;
     left: 50%;
@@ -141,6 +152,11 @@ main{
 .comprar label{
     display: block;
     margin: 1rem auto;
+}
+
+.comprar input{
+    display: block;
+    margin-bottom: 1rem;
 }
 
 .comprar button{
@@ -186,7 +202,7 @@ main{
 }
 
 .seccionHP{
-  background-color: rgba(82, 82, 86, 0.13);
+  /* background-color: rgba(82, 82, 86, 0.13); */
   border-radius: 12px;
   margin-top: 1.5rem;
   padding: 1.2rem;  

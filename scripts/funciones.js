@@ -27,26 +27,85 @@ function verificarExistenciaUsuario(){
     return false;
 }
 
+//registro del usuario que se almacenará en el localStorage
+function registroUsuario(){
+    //agrego un evento al link del registro para que se abra la ventana de registro de usuario
+    btnRegistro.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        ingreso.className = "none";
+        registro.className = "registro";
+
+        formularioRegistro.addEventListener("submit", (e) => {
+            e.preventDefault()
+            //aplico los inputs como nombre de usuario, contraseña e email y los envio al localStorage
+            let usuario = e.target.children[0].children[0].value;
+            let contraseña = e.target.children[1].children[0].value;
+            let email = e.target.children[2].children[0].value;
+
+            let persona = {nombre: usuario, contraseña:contraseña, email:email};
+            localStorage.setItem("persona", JSON.stringify(persona));
+
+            //confirmo a través de un alert que se registró el usuario
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Usuario creado con exito',
+                showConfirmButton: false,
+                timer: 1500
+            })
+
+            //al finalizar el registro vuelvo al menu de inicio de sesion
+            ingreso.className = "ingreso";
+            registro.className = "none";
+
+        })
+    })
+}
+
 //Ingreso de sesion para el usuario al presionar el link del header
 function ingresoUsuario(){
         //agrego la clase ingreso asi aparece el formulario
         ingreso.className = "ingreso";
+
         formularioIngreso.addEventListener("submit", (e) => {
             e.preventDefault()
-            //aplico los inputs como nombre de usuario y contraseña y los envio al sessionStorage
-            let usuario = e.target.children[0].children[0].value;
+            //aplico los inputs como email y contraseña y los comparó con los datos del localStorage
+            let email = e.target.children[0].children[0].value;
             let contraseña = e.target.children[1].children[0].value;
     
-            sessionStorage.setItem("usuario", usuario);
-            sessionStorage.setItem("contraseña", contraseña);
-    
-            //llamo al nombre de usuario y lo escribo dentro del header
-            let usuarioStorage = sessionStorage.getItem("usuario");
-            perfil.innerHTML = `<p class="header__sesion">Bienvenid@ ${usuarioStorage}</p>`;
-    
-            //aplico la clase none para que el formulario desaparezca
-            ingreso.className = "none";
+            let persona = JSON.parse(localStorage.getItem("persona"));
+
+            if(!persona){
+                Swal.fire(
+                    'Error',
+                    'Debes registrar un usuario',
+                    'error'
+                )
+            }else if(email != persona.email){
+                Swal.fire(
+                    'Email incorrecto',
+                    'Intentelo de nuevo.',
+                    'error'
+                )
+            }else if(contraseña != persona.contraseña){
+                Swal.fire(
+                    'Contraseña incorrecta',
+                    'Intentelo de nuevo.',
+                    'error'
+                )
+            }else{
+                //si el mail y la contraseña son correctas se realiza el inicio de sesion y se lo mostrará con su nombre en el header
+                perfil.innerHTML = `<p class="header__sesion">Bienvenid@ ${persona.nombre}</p>`;
+                ingreso.className = "none";
+
+                //guardo el nombre del usuario en el sessionStorage asi seguirá con la sesión iniciada hasta que cierre el navegador
+                sessionStorage.setItem("usuario", persona.nombre);
+            }
         })
+
+        //ingreso la función de registrar usuario dentro del menu de inicio sesión
+        registroUsuario();
 }
 
 //verifica si la entrada es un numero y si es mayor a 0
@@ -100,7 +159,7 @@ function comprarEntradasHP(peliculasHarry){
                     'Error',
                     'Debes iniciar sesion para poder comprar entradas',
                     'error'
-                  )
+                )
             }else{
                 //agrego la clase comprar asi aparece el formulario
                 comprar.className = "comprar";

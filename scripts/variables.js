@@ -12,7 +12,7 @@ class PeliculaHP{
 
 let peliculasHarry = [];
 peliculasHarry.push(new PeliculaHP("Harry Potter y la Piedra Filosofal", 0, "El día en que cumple once años, Harry Potter descubre que es hijo de dos conocidos hechiceros, de los que ha heredado poderes mágicos. Deberá acudir entonces a una famosa escuela de magia y hechicería: Hogwarts.", "idhp1"));
-peliculasHarry.push(new PeliculaHP("Harry Potter y la Cámara Secreta", 0, "Terminado el verano, Harry no ve la hora de abandonar la casa de sus odiosos tíos. Inesperadamente se presenta en su dormitorio Dobby, un elfo doméstico, que le anuncia que correrá un gran peligro si vuelve a Hogwarts.", "idhp2"));
+peliculasHarry.push(new PeliculaHP("Harry Potter y la Camara Secreta", 0, "Terminado el verano, Harry no ve la hora de abandonar la casa de sus odiosos tíos. Inesperadamente se presenta en su dormitorio Dobby, un elfo doméstico, que le anuncia que correrá un gran peligro si vuelve a Hogwarts.", "idhp2"));
 peliculasHarry.push(new PeliculaHP("Harry Potter y el Prisionero de Azkaban", 13, "El tercer año de estudios de Harry en Hogwarts se ve amenazado por la fuga de Sirius Black de la prisión para magos de Azkaban. Se trata de un peligroso mago que fue cómplice de Lord Voldemort y que intentará vengarse de Harry Potter.", "idhp3"));
 peliculasHarry.push(new PeliculaHP("Harry Potter y el Caliz de Fuego", 13, "Tras las evidencias de que Voldemort ha regresado, Harry se verá envuelto en el tradicional Torneo de los Tres Magos. Con ayuda de Ron y Hermione, se preparará para competir en una nueva lucha que él no ha elegido.", "idhp4"));
 peliculasHarry.push(new PeliculaHP("Harry Potter y la Orden del Fénix", 13, "Cuando la ignorancia de una nueva profesora deja a Hogwarts sin la preparación suficiente para luchar contra el demonio, Harry le enseña a un pequeño grupo de estudiantes a defenderse en contra de las artes oscuras.", "idhp5"));
@@ -30,6 +30,9 @@ let perfil = document.getElementById("perfil");
 let perfilLink = document.getElementById("perfilLink");
 let ingreso = document.getElementById("ingreso");
 let formularioIngreso = document.getElementById("formularioIngreso");
+let btnRegistro = document.getElementById("registroLink");
+let registro = document.getElementById("registro");
+let formularioRegistro = document.getElementById("formularioRegistro");
 let btnPeliculas = document.getElementById("peliculas");
 let cartelera = document.getElementById("cartelera");
 let comprar = document.getElementById("compra");

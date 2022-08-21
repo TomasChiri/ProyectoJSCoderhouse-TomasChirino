@@ -32,20 +32,32 @@
         </nav>
         <div>
             <img class="header__perfil" src="./imagenes/perfil.png" alt="perfil"> 
-            <span id="perfil"><a id="perfilLink" class="header__sesion" href="#">Iniciar sesion</a></span>
+            <span id="perfil"><a id="perfilLink" class="header__sesion" href="#">Iniciar sesión</a></span>
         </div>        
     </header>
 
         <div id="ingreso" class="none">
-            <h2>Registro de usuario</h2>
+            <h2>INICIO DE SESIÓN</h2>
             <form id="formularioIngreso" action="">
-                <label for="usuario">Ingrese el nombre de usuario: <input name="entradas" type="text"></label>
-                <label for="contraseña">Ingrese la contraseña: <input name="contraseña" type="password"></label>
+                <label for="email">Email: <input name="email" type="email"></label>
+                <label for="contraseña">Contraseña: <input name="contraseña" type="password"></label>
+                <h6><a href="" id="registroLink">¿No tienes una cuenta? Haz click aqui para registrate</a></h6>
+                <button type="submit" class="btn btn-secondary">Ingresar</button>
+            </form>
+        </div>
+
+        <div id="registro" class="none">
+            <h2>REGISTRAR USUARIO</h2>
+            <form id="formularioRegistro" action="">
+                <label for="usuario">Usuario: <input name="usuario" type="text"></label>
+                <label for="contraseña">Contraseña: <input name="contraseña" type="password"></label>
+                <label for="email">Email: <input name="email" type="email"></label>
                 <button type="submit" class="btn btn-secondary">Ingresar</button>
             </form>
         </div>
 
     <main>
+
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
             <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -100,7 +112,7 @@
 
     <footer class="footer">
         <img class="footer__logo" src="./imagenes/logo.png" alt="logo">
-        <p>aca irian cosas del footer</p>
+        <p>Copyright © Todos los derechos reservados</p>
     </footer>
 
     <!-- Bootstrap -->
@@ -108,6 +120,7 @@
 
     <!-- Sweet Alerts -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     <script src="./scripts/funciones.js"></script>
     <script src="./scripts/variables.js"></script>
